@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} · {{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+    <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -20,6 +24,7 @@
           </select>
         </div>
         <nav class="top-nav">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🎨</button>
           <a href="{{ '/book/' | relative_url }}">Book</a>
           <a href="{{ '/pages/cli/' | relative_url }}">CLI</a>
           <a href="{{ '/pages/stdlib/' | relative_url }}">Stdlib</a>
