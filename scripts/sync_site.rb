@@ -5,7 +5,7 @@ require "fileutils"
 require "yaml"
 require "json"
 
-ROOT = File.expand_path("../../..", __dir__)
+ROOT = File.expand_path("..", __dir__)
 SITE = File.join(ROOT, "docs", "site")
 BOOK = File.join(ROOT, "docs", "book")
 CHAPTERS_DIR = File.join(BOOK, "chapters")
