@@ -1,0 +1,20 @@
+<nav class="side-nav">
+  <div class="nav-section">Book</div>
+  <ul>
+    {% if page.version and site.data.version_nav[page.version] %}
+      {% for item in site.data.version_nav[page.version] %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+      {% endfor %}
+    {% else %}
+      {% for item in site.data.nav.book %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+  <div class="nav-section">Guides</div>
+  <ul>
+    {% for item in site.data.nav.guides %}
+      <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>

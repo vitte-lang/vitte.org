@@ -1,0 +1,4 @@
+---
+title: Vitte
+layout: home
+---

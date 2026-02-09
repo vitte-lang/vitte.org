@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title }} · {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <span class="subtitle">{{ site.subtitle }}</span>
+        <div class="version-switcher">
+          <span class="version-label">Version</span>
+          <select onchange="if (this.value) window.location.href=this.value;">
+            {% for v in site.data.versions.items %}
+              <option value="{{ v.url | relative_url }}" {% if v.label == site.data.versions.current %}selected{% endif %}>{{ v.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <nav class="top-nav">
+          <a href="{{ '/book/' | relative_url }}">Book</a>
+          <a href="{{ '/pages/cli/' | relative_url }}">CLI</a>
+          <a href="{{ '/pages/stdlib/' | relative_url }}">Stdlib</a>
+          <a href="{{ '/pages/grammar/' | relative_url }}">Grammar</a>
+          <a href="{{ '/pages/errors/' | relative_url }}">Errors</a>
+        </nav>
+        <div class="top-search">
+          <input id="search-input-top" type="search" placeholder="Search…" autocomplete="off" />
+          <div id="search-results-top" class="search-results top-results"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        {% include search.html %}
+        {% include nav.html %}
+      </aside>
+      <main class="content">
+        {{ content }}
+      </main>
+    </div>
+
+    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+    <footer class="site-footer">
+      <div class="container">
+        <span>Vitte documentation site</span>
+      </div>
+    </footer>
+  </body>
+</html>

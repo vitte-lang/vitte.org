@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ site.title }} · {{ site.subtitle }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+  </head>
+  <body class="home">
+    <header class="home-hero">
+      <div class="home-grid">
+        <div class="home-title">
+          <div class="eyebrow">The Vitte Language</div>
+          <h1>Readable systems code, without the noise.</h1>
+          <p>
+            Vitte is a pragmatic systems language focused on clarity, explicitness,
+            and tooling that can actually keep up. It favors structure over magic,
+            and ships with a real compiler pipeline you can inspect.
+          </p>
+          <div class="home-cta">
+            <a class="btn primary" href="{{ '/book/' | relative_url }}">Read the Book</a>
+            <a class="btn ghost" href="{{ '/pages/cli/' | relative_url }}">CLI Guide</a>
+          </div>
+          <div class="home-meta">
+            <div><span>Version</span> {{ site.data.versions.current }}</div>
+            <div><span>Focus</span> Kernels, embedded, tooling</div>
+            <div><span>Style</span> Explicit, predictable</div>
+          </div>
+        </div>
+        <div class="home-card">
+          <div class="card-head">Vitte in 30 seconds</div>
+          <pre><code>space std/os/user
+
+use std/core/types.string
+use std/core/types.i32
+
+#[extern]
+proc open_read(path: string) -&gt; i32
+
+form User {
+    name: string
+    uid: i32
+}
+
+proc read_users() -&gt; [User] {
+    let out: [User] = []
+    let fd = open_read(&quot;/etc/passwd&quot;)
+    if fd &lt; 0 { give out }
+    give out
+}</code></pre>
+        </div>
+      </div>
+    </header>
+
+    <section class="home-strip">
+      <div class="strip-item">
+        <div class="strip-title">Structured syntax</div>
+        <div class="strip-text">Modules, forms, picks, and procs designed for tooling.</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-title">Transparent pipeline</div>
+        <div class="strip-text">Frontend → HIR → MIR → backend, inspectable at every step.</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-title">Practical targets</div>
+        <div class="strip-text">Native, Arduino, kernel-style builds, no ceremony.</div>
+      </div>
+    </section>
+
+    <section class="home-grid-2">
+      <div class="panel">
+        <h2>Start Here</h2>
+        <p>Jump into the book or pick a focused guide.</p>
+        <div class="panel-links">
+          <a href="{{ '/book/' | relative_url }}">Book</a>
+          <a href="{{ '/pages/cli/' | relative_url }}">CLI</a>
+          <a href="{{ '/pages/stdlib/' | relative_url }}">Stdlib</a>
+          <a href="{{ '/pages/grammar/' | relative_url }}">Grammar</a>
+          <a href="{{ '/pages/errors/' | relative_url }}">Errors</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Design Principles</h2>
+        <ul class="plain">
+          <li>Readable by default</li>
+          <li>Explicit control over runtime behavior</li>
+          <li>Tools-friendly syntax and layout</li>
+          <li>Simple, inspectable compiler pipeline</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="home-footer">
+      <div>Vitte documentation · Built for Netlify</div>
+      <a href="{{ '/book/' | relative_url }}">Open the Book →</a>
+    </footer>
+  </body>
+</html>

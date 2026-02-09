@@ -1,0 +1,75 @@
+---
+book:
+- title: Préface
+  url: "/book/00-preface/"
+- title: Avant-propos
+  url: "/book/00-avant-propos/"
+- title: 1. Démarrer
+  url: "/book/01-demarrer/"
+- title: 2. Philosophie et design
+  url: "/book/02-philosophie/"
+- title: 3. Anatomie d’un projet
+  url: "/book/03-projet/"
+- title: 4. Syntaxe de base
+  url: "/book/04-syntaxe/"
+- title: 5. Types et valeurs
+  url: "/book/05-types/"
+- title: 6. Fonctions et procédures
+  url: "/book/06-procedures/"
+- title: 7. Contrôle de flux
+  url: "/book/07-controle/"
+- title: 8. Structures et enums
+  url: "/book/08-structures/"
+- title: 9. Modules, use, pull, share
+  url: "/book/09-modules/"
+- title: 10. Erreurs et diagnostics
+  url: "/book/10-diagnostics/"
+- title: 11. Collections et itération
+  url: "/book/11-collections/"
+- title: 12. Pointeurs, références, slices
+  url: "/book/12-pointeurs/"
+- title: 13. Génériques
+  url: "/book/13-generiques/"
+- title: 14. Macros
+  url: "/book/14-macros/"
+- title: 15. HIR, MIR et pipeline
+  url: "/book/15-pipeline/"
+- title: 16. Backend C++ et interop
+  url: "/book/16-interop/"
+- title: 17. Standard library (tour guidé)
+  url: "/book/17-stdlib/"
+- title: 18. Tests et outillage
+  url: "/book/18-tests/"
+- title: 19. Performance et profiling
+  url: "/book/19-performance/"
+- title: 20. Reproductibilité et builds
+  url: "/book/20-repro/"
+- title: '21. Projet 1 : CLI robuste'
+  url: "/book/21-projet-cli/"
+- title: '22. Projet 2 : mini‑serveur'
+  url: "/book/22-projet-http/"
+- title: '23. Projet 3 : utilitaire système'
+  url: "/book/23-projet-sys/"
+- title: '24. Projet 4 : base de données key‑value'
+  url: "/book/24-projet-kv/"
+- title: '25. Projet 5 : embarqué Arduino'
+  url: "/book/25-projet-arduino/"
+- title: '26. Projet 6 : éditeur terminal'
+  url: "/book/26-projet-editor/"
+- title: '27. Annexes : grammaire'
+  url: "/book/27-grammaire/"
+- title: '28. Annexes : conventions'
+  url: "/book/28-conventions/"
+- title: '29. Annexes : style de code'
+  url: "/book/29-style/"
+- title: '30. Annexes : FAQ'
+  url: "/book/30-faq/"
+guides:
+- title: CLI
+  url: "/pages/cli/"
+- title: Stdlib
+  url: "/pages/stdlib/"
+- title: Grammar
+  url: "/pages/grammar/"
+- title: Errors
+  url: "/pages/errors/"

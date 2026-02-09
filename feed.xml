@@ -1,0 +1,22 @@
+---
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.title }}</title>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <description>{{ site.subtitle }}</description>
+    {% assign chapters = site.chapters | sort: 'order' %}
+    {% for doc in chapters limit: 20 %}
+    <item>
+      <title>{{ doc.title }}</title>
+      <link>{{ site.url }}{{ site.baseurl }}{{ doc.url }}</link>
+      <guid>{{ site.url }}{{ site.baseurl }}{{ doc.url }}</guid>
+      <pubDate>{{ doc.date | default: site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+      <description><![CDATA[{{ doc.content | strip_html | truncate: 280 }}]]></description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

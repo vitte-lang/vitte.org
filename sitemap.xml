@@ -1,0 +1,22 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+  </url>
+  {% for page in site.pages %}
+    {% if page.url and page.url != '/sitemap.xml' and page.url != '/feed.xml' %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
+    </url>
+    {% endif %}
+  {% endfor %}
+  {% for doc in site.chapters %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ doc.url }}</loc>
+    </url>
+  {% endfor %}
+</urlset>
