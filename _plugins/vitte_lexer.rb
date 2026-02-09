@@ -28,7 +28,7 @@ module Rouge
       end
 
       state :root do
-        rule %r/\s+/, Whitespace
+        rule %r/\s+/, Text::Whitespace
         rule %r/<<<(?:(?!>>>).)*>>>/m, Comment::Multiline
         rule %r/<<</, Comment::Multiline, :zone_comment
         rule %r/#.*?$/, Comment::Single
