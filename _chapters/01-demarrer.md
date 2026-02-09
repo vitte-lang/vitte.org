@@ -12,11 +12,23 @@ L’idée O’Reilly ici est claire : vous donner un terrain sûr et reproducti
 
 ## Installation rapide
 
+Si vous utilisez Homebrew, installez Vitte directement :
+
+```sh
+brew install vitte
+```
+
+Cette commande installe le binaire et ajoute `vitte` à votre `PATH`. C’est la voie la plus simple pour démarrer si vous ne comptez pas modifier le compilateur.
+
+Si vous préférez construire le compilateur localement (ou contribuer), utilisez le build depuis la source :
+
 ```sh
 make build
 ```
 
 Le binaire est disponible dans `bin/vitte`. Gardez cette commande en tête : si tout échoue, repartez d’un binaire propre. La règle d’or : ne déboguez jamais un outil que vous n’avez pas construit vous‑même.
+
+Pour VS Code, installez l’extension Vitte Studio : [Vitte Studio (VS Code Marketplace)](https://marketplace.visualstudio.com/items?itemName=VitteStudio.vitte-studio)
 
 ## Vérifier l’environnement
 
@@ -147,4 +159,3 @@ entry main at core/app {
 ## API idéale (future)
 
 Un module `std/cli/app` pourrait générer automatiquement `--help` et valider les arguments déclaratifs.
-
