@@ -8,24 +8,20 @@ module Rouge
       filenames '*.vit'
       mimetypes 'text/x-vitte'
 
-      def self.keywords
-        @keywords ||= Set.new %w(
-          proc form trait pick enum when loop if else otherwise break continue set let give emit
-          from as import export pub fn const type cast match with while for in do is
-          return yield assume pragma builtin extern asm inline volatile unsafe
-          space pull use share global make entry macro case select field
-          true false null undefined void
-        )
-      end
+      KEYWORDS = %w(
+        proc form trait pick enum when loop if else otherwise break continue set let give emit
+        from as import export pub fn const type cast match with while for in do is
+        return yield assume pragma builtin extern asm inline volatile unsafe
+        space pull use share global make entry macro case select field
+        true false null undefined void
+      ).freeze
 
-      def self.builtins
-        @builtins ||= Set.new %w(
-          print println eprint eprintln len cap assert panic todo unreachable
-          clone copy drop transmute bool i8 i16 i32 i64 i128 isize
-          u8 u16 u32 u64 u128 usize f32 f64 string rune byte
-          ptr ref mut option result error ok none some err unwrap expect
-        )
-      end
+      BUILTINS = %w(
+        print println eprint eprintln len cap assert panic todo unreachable
+        clone copy drop transmute bool i8 i16 i32 i64 i128 isize
+        u8 u16 u32 u64 u128 usize f32 f64 string rune byte
+        ptr ref mut option result error ok none some err unwrap expect
+      ).freeze
 
       state :root do
         rule %r/\s+/, Text::Whitespace
@@ -35,8 +31,8 @@ module Rouge
         rule %r/\/\/.*?$/, Comment::Single
         rule %r/\/\*/, Comment::Multiline, :comment
         
-        rule %r/\b(?:#{keywords.join('|')})\b/, Keyword
-        rule %r/\b(?:#{builtins.join('|')})\b/, Name::Builtin
+        rule %r/\b(?:#{KEYWORDS.join('|')})\b/, Keyword
+        rule %r/\b(?:#{BUILTINS.join('|')})\b/, Name::Builtin
         
         rule %r/"(?:\\.|[^"\\])*"/, String::Double
         rule %r/'(?:\\.|[^'\\])*'/, String::Char
