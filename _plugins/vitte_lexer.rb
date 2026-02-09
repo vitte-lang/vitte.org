@@ -34,9 +34,9 @@ module Rouge
         rule %r/\b(?:#{KEYWORDS.join('|')})\b/, Keyword
         rule %r/\b(?:#{BUILTINS.join('|')})\b/, Name::Builtin
         
-        rule %r/"(?:\\.|[^"\\])*"/, String::Double
-        rule %r/'(?:\\.|[^'\\])*'/, String::Char
-        rule %r/`[^`]*`/, String::Backtick
+        rule %r/"(?:\\.|[^"\\])*"/, Str::Double
+        rule %r/'(?:\\.|[^'\\])*'/, Str::Char
+        rule %r/`[^`]*`/, Str::Backtick
         
         rule %r/\b\d+\.\d+([eE][+-]?\d+)?\b/, Num::Float
         rule %r/\b0[xX][0-9a-fA-F]+\b/, Num::Hex
