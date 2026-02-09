@@ -10,9 +10,10 @@ module Rouge
 
       def self.keywords
         @keywords ||= Set.new %w(
-          proc form enum when loop if else break continue set let give
-          from as import export pub fn const type cast match with while for in do
-          return yield assume pragma builtin extern asm inline volatile
+          proc form trait pick enum when loop if else otherwise break continue set let give emit
+          from as import export pub fn const type cast match with while for in do is
+          return yield assume pragma builtin extern asm inline volatile unsafe
+          space pull use share global make entry macro case select field
           true false null undefined void
         )
       end
@@ -28,6 +29,9 @@ module Rouge
 
       state :root do
         rule %r/\s+/, Whitespace
+        rule %r/<<<(?:(?!>>>).)*>>>/m, Comment::Multiline
+        rule %r/<<</, Comment::Multiline, :zone_comment
+        rule %r/#.*?$/, Comment::Single
         rule %r/\/\/.*?$/, Comment::Single
         rule %r/\/\*/, Comment::Multiline, :comment
         
@@ -44,16 +48,24 @@ module Rouge
         rule %r/\b\d+\b/, Num::Integer
         
         rule %r/[{}\[\](),.;:]/, Punctuation
-        rule %r/[-+\/*%^&|!<>=]=?/, Operator
+        rule %r/::=|->|=>/, Operator
+        rule %r/[|?+*~]/, Operator
+        rule %r/[-+\/*%^&!<>=]=?/, Operator
         rule %r/[:=]/, Operator
         
         rule %r/[a-zA-Z_]\w*/, Name
       end
 
       state :comment do
-        rule %r/[^*/]+/, Comment::Multiline
-        rule %r/\*\//, Comment::Multiline, :pop!
-        rule %r/[*/]/, Comment::Multiline
+        rule %r{[^*/]+}, Comment::Multiline
+        rule %r{\*/}, Comment::Multiline, :pop!
+        rule %r{[*/]}, Comment::Multiline
+      end
+
+      state :zone_comment do
+        rule %r/[^>]+/, Comment::Multiline
+        rule %r/>>>/, Comment::Multiline, :pop!
+        rule %r/>/, Comment::Multiline
       end
     end
   end
