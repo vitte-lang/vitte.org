@@ -18,15 +18,18 @@ FileUtils.mkdir_p(SITE_CHAPTERS)
 FileUtils.mkdir_p(SITE_ASSETS)
 FileUtils.mkdir_p(SITE_JS)
 
+# Only process if external book source exists
 summary_path = File.join(BOOK, "SUMMARY.md")
-summary = File.read(summary_path)
-
-link_rx = /\[(.+?)\]\((chapters\/[^\)]+\.md)\)/
 chapters = []
-summary.scan(link_rx) do |title, rel|
-  file = rel.sub("chapters/", "")
-  slug = File.basename(file, ".md")
-  chapters << { "title" => title.strip, "file" => file, "slug" => slug }
+
+if File.exist?(summary_path)
+  summary = File.read(summary_path)
+  link_rx = /\[(.+?)\]\((chapters\/[^\)]+\.md)\)/
+  summary.scan(link_rx) do |title, rel|
+    file = rel.sub("chapters/", "")
+    slug = File.basename(file, ".md")
+    chapters << { "title" => title.strip, "file" => file, "slug" => slug }
+  end
 end
 
 chapter_index = {}
@@ -109,6 +112,8 @@ pages = {
   "grammar" => File.join(ROOT, "docs", "grammar", "README.md"),
 }
 
+FileUtils.mkdir_p(File.join(SITE, "pages"))
+
 pages.each do |slug, path|
   next unless File.exist?(path)
   raw = File.read(path)
@@ -134,7 +139,9 @@ nav = {
   ],
 }
 
-nav_path = File.join(SITE, "_data", "nav.yml")
+nav_data_dir = File.join(SITE, "_data")
+FileUtils.mkdir_p(nav_data_dir)
+nav_path = File.join(nav_data_dir, "nav.yml")
 File.write(nav_path, nav.to_yaml)
 
 # Versions data
